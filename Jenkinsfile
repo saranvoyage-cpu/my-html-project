@@ -2,22 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repo') {
+        stage('Checkout') {
             steps {
-                echo 'Cloning repository...'
-                git branch: 'main', url: 'git@github.com:saranvoyage-cpu/my-html-project.git'
+                // Checkout your GitHub repo using SSH and Jenkins credentials
+                git url: 'git@github.com:saranvoyage-cpu/my-html-project.git',
+                    credentialsId: 'github-ssh-key'
             }
         }
-
+        
         stage('Build') {
             steps {
-                echo 'No build steps for static HTML project.'
+                echo 'Building the project...'
+                // Add your build commands here (if any)
             }
         }
 
-        stage('Deploy to Client') {
+        stage('Deploy') {
             steps {
-                sh 'scp -o StrictHostKeyChecking=no *.html user@192.168.1.15:/var/www/html/'
+                echo 'Deploying the project...'
+                // Add your deploy commands here (e.g., copying files)
             }
         }
     }
