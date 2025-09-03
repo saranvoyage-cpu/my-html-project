@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git url: 'https://github.com/saranvoyage-cpu/my-html-project.git', 
                     branch: 'main',
-                    credentialsId: 'github-https-creds'  // we'll add this in step 2
+                    credentialsId: 'my-ssh-creds'  // we'll add this in step 2
             }
         }
 
